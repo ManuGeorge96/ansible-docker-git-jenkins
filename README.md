@@ -22,6 +22,9 @@ Advantage of using this playbook is if there is any new commits on Git repo, the
    - Pull the latest image from the Docker registry, if only there is a new update.
    - Create Docker container with the new image, else task will get skiped.
 
+[<img align="center" alt="Unix" width="800" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/jenkns.drawio.png" />][ln]
+
+
 ## Prerequisites
 
 - The git repo must have Docker file and the code section( if needed).
