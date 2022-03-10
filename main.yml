@@ -5,13 +5,13 @@
   tasks:
     - name: "Set Fact Values"
       set_fact:
-        docker_user: mdockanu
-        docker_pass: Manu@DOCKER1996
-        repo: https://github.com/ManuGeorge96/simple_flask_app.git
-        image_name: fresh_flask
-        ct_name: fresh_flask
-        ct_publish_port: 80
-        ct_port: 5000
+        docker_user: DOCKER_USER
+        docker_pass: DOCKER_PASSWORD
+        repo: REPO_URL
+        image_name: IMAGE_NAME
+        ct_name: CONTAINER_NAME
+        ct_publish_port: PUBLISH_PORT
+        ct_port: CONTAINER_PORT
 
     - include_tasks: build.yml
       when: inventory_hostname in groups ['Build']  

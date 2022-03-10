@@ -1,4 +1,4 @@
 [Build]
-build ansible_host=13.126.66.63 ansible_user=ec2-user 
+build ansible_host=BUILD_SERVER_IP ansible_user=ec2-user 
 [Test]
-test ansible_host=13.234.110.59 ansible_user=ec2-user
+test ansible_host=TEST_SERVER_IP ansible_user=ec2-user
