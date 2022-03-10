@@ -62,4 +62,10 @@ Advantage of using this playbook is if there is any new commits on Git repo, we 
   
 ## Sample Output from Jenkins
 
+[<img align="left" alt="Unix" width="800" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/1.PNG" />][ln]
+[<img align="left" alt="Unix" width="800" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/2.PNG" />][ln]
+[<img align="left" alt="Unix" width="800" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/3.PNG" />][ln]
+[<img align="left" alt="Unix" width="800" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/4.PNG" />][ln]
 
+
+[ln]: https://www.linkedin.com/in/manu-george-03453613a
