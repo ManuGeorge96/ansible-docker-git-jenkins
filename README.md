@@ -25,8 +25,12 @@ Advantage of using this playbook is if there is any new commits on Git repo, we 
 ## Prerequisites
 
 - The git repo must have Docker file and the code section( if needed).
+- Idea about configuring Tasks on Jenkins.
+- Add Webhook on Git.
  
 ## To Use The Playbook
+
+### For Running the Playbook Manually
 
 - ```sh
    git clone https://github.com/ManuGeorge96/ansibe-docker-git.git
@@ -35,8 +39,7 @@ Advantage of using this playbook is if there is any new commits on Git repo, we 
     cd  ansibe-docker-git
   ```  
 - Setting Up Inventory File
-  -  Create a file <b>hosts</b>.
-  -  Include below line on the file ( edit credentials )
+  -  Include below line on the <b>hosts</b> file, commend out the existing lines on the file ( edit credentials )
      - ```sh
         Build ansible_host=WP_SERVER_IP_HERE ansible_user=SSH_USER_ON_SERVER ansible_ssh_port=SSH_PORT ansible_ssh_private_key_file=PATH_TO_PRIVATE_KEY
         Test ansible_host=DB_SERVER_IP_HERE ansible_user=SSH_USER_ON_SERVER ansible_ssh_port=SSH_PORT ansible_ssh_private_key_file=PATH_TO_PRIVATE_KEY
@@ -52,6 +55,9 @@ Advantage of using this playbook is if there is any new commits on Git repo, we 
     ct_port: CONTIANER_PORT
   ```
 - ```sh
-     ansible-playbook -i hosts main.yml -e tag=TAG_VALUE_HERE 
+     ansible-playbook -i hosts main.yml
   ```  
   
+## Sample Output from Jenkins
+
+
