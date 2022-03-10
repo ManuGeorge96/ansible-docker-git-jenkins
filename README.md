@@ -33,10 +33,10 @@ Advantage of using this playbook is if there is any new commits on Git repo, the
 ### For Running the Playbook Manually
 
 - ```sh
-   git clone https://github.com/ManuGeorge96/ansibe-docker-git.git
+   git clone https://github.com/ManuGeorge96/ansible-docker-git-jenkins.git
   ```
 - ```sh
-    cd  ansibe-docker-git
+    cd  ansible-docker-git-jenkins
   ```  
 - Setting Up Inventory File
   -  Include below line on the <b>hosts</b> file, commend out the existing lines on the file ( edit credentials )
