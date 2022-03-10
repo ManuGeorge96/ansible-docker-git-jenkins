@@ -1,0 +1,69 @@
+---
+- name: "Updating..."   
+  yum:
+    name: '*'
+    state: present
+                
+- name: "Installing Packages"
+  yum:
+    name: "{{ packages }}"
+    state: present
+  register: pkg  
+
+- name: "Retarting Docker Service"
+  service:
+    name: docker
+    state: restarted
+    enabled: true
+  when: pkg.changed 
+  register: start  
+
+- name: "Checking Docker Python Module"
+  pip:
+    name: docker-py
+    state: present       
+
+- name: "Pulling latest codes from Git"
+  git:
+    repo: "{{ repo }}"
+    dest: /usr/local/src/git_file/
+  register: pull_status 
+
+- name: "Authenticating Docker Hub"
+  docker_login:
+    username: "{{ docker_user }}"
+    password: "{{ docker_pass }}"   
+    state: present 
+  when: start.changed  == true or pull_status.changed == true    
+
+- name: "Building Image From Docker File"
+  docker_image:
+    build:
+      path: /usr/local/src/git_file/
+      pull: true  
+    name: "{{ docker_user }}/{{ image_name }}"
+    tag: "{{ item }}"
+    source: build
+    push: yes
+    force_tag: true
+    force_source: true
+  with_items: 
+    - "{{ pull_status.after }}"
+    - latest  
+  when: pull_status.changed    
+
+- name: "Loging out From Docker Hub"
+  docker_login:
+    username: "{{ docker_user }}"
+    password: "{{ docker_pass }}"
+    state: absent
+  when: start.changed == true or pull_status.changed == true   
+
+- name: "Removing Images from Build Server"
+  docker_image:
+    name: "{{ docker_user }}/{{ image_name }}:{{ item }}"
+    state: absent
+  with_items:
+    - latest
+    - "{{ pull_status.after }}"
+  when: pull_status.changed      

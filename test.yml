@@ -1,0 +1,40 @@
+---
+- name: "Updating..."
+  yum:
+    name: '*'
+    state: present
+
+- name: "Installng Packages"
+  yum:
+    name: "{{ packages }}"
+    state: present
+  register: pkg
+
+- name: "Retarting Docker Service"
+  service:
+    name: docker
+    state: restarted
+    enabled: true
+  when: pkg.changed
+
+- name: "Checking Docker Python Module"
+  pip:
+    name: docker-py
+    state: present
+
+- name: "Pulling Latest Image form Hub"
+  docker_image:
+    name: "{{ docker_user }}/{{ image_name }}:latest"
+    source: pull
+    force_source: true
+    state: present
+  register: pull_status    
+
+- name: "Building Container with {{ docker_user }}/{{ image_name }}:latest"
+  docker_container:
+    name: "{{ ct_name }}"
+    image: "{{ docker_user }}/{{ image_name }}:latest"
+    published_ports: "{{ ct_publish_port }}:{{ ct_port }}"
+    recreate: true
+    state: started
+  when: pull_status.changed  
