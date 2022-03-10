@@ -41,8 +41,10 @@ Advantage of using this playbook is if there is any new commits on Git repo, we 
 - Setting Up Inventory File
   -  Include below line on the <b>hosts</b> file, commend out the existing lines on the file ( edit credentials )
      - ```sh
-        Build ansible_host=WP_SERVER_IP_HERE ansible_user=SSH_USER_ON_SERVER ansible_ssh_port=SSH_PORT ansible_ssh_private_key_file=PATH_TO_PRIVATE_KEY
-        Test ansible_host=DB_SERVER_IP_HERE ansible_user=SSH_USER_ON_SERVER ansible_ssh_port=SSH_PORT ansible_ssh_private_key_file=PATH_TO_PRIVATE_KEY
+        [Build]
+        build ansible_host=WP_SERVER_IP_HERE ansible_user=SSH_USER_ON_SERVER ansible_ssh_port=SSH_PORT ansible_ssh_private_key_file=PATH_TO_PRIVATE_KEY
+        [Test]
+        test ansible_host=DB_SERVER_IP_HERE ansible_user=SSH_USER_ON_SERVER ansible_ssh_port=SSH_PORT ansible_ssh_private_key_file=PATH_TO_PRIVATE_KEY
        ```
 - Edit Required Data's on <b>main.yml</b> file.
   ```sh
